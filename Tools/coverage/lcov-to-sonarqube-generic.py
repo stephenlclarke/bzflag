@@ -42,7 +42,7 @@ def main() -> int:
     for file_path in sorted(files):
         file_element = ET.SubElement(coverage, "file", path=file_path)
         for line_number in sorted(files[file_path]):
-            ET.SubElement(coverage, "lineToCover", lineNumber=str(line_number), covered=str(files[file_path][line_number]).lower())
+            ET.SubElement(file_element, "lineToCover", lineNumber=str(line_number), covered=str(files[file_path][line_number]).lower())
 
     tree = ET.ElementTree(coverage)
     ET.indent(tree, space="  ")
