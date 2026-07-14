@@ -43,9 +43,11 @@ private let testArena = Arena(
 
 @Test func quickTurnFlagUsesTheLegacyOnePointFiveMultiplier() {
   var normal = BZFlagMatch(arena: testArena, flags: [])
+  var quickTank = Tank(callsign: "Quick", position: Vector2(x: 5, y: 5))
+  quickTank.heldFlag = .quickTurn
   var quick = BZFlagMatch(
     arena: testArena,
-    player: Tank(callsign: "Quick", position: Vector2(x: 5, y: 5), heldFlag: .quickTurn),
+    player: quickTank,
     flags: []
   )
 
@@ -91,9 +93,11 @@ private let testArena = Arena(
 }
 
 @Test func ricochetShotsBounceButNormalShotsStopAtBuildings() {
+  var ricochetTank = Tank(callsign: "Player", position: Vector2(x: 10, y: 10))
+  ricochetTank.heldFlag = .ricochet
   var ricochet = BZFlagMatch(
     arena: testArena,
-    player: Tank(callsign: "Player", position: Vector2(x: 10, y: 10), heldFlag: .ricochet),
+    player: ricochetTank,
     flags: []
   )
   var normal = BZFlagMatch(

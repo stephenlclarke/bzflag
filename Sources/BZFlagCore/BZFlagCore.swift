@@ -151,19 +151,16 @@ public struct Tank: Codable, Hashable, Sendable, Identifiable {
   public var wins: Int
   public var losses: Int
 
-  public init(
-    id: UUID = UUID(), callsign: String, position: Vector2, heading: Double = 0, altitude: Double = 0,
-    verticalVelocity: Double = 0, heldFlag: FlagKind? = nil, wins: Int = 0, losses: Int = 0
-  ) {
-    self.id = id
+  public init(callsign: String, position: Vector2, heading: Double = 0) {
+    id = UUID()
     self.callsign = callsign
     self.position = position
     self.heading = heading
-    self.altitude = altitude
-    self.verticalVelocity = verticalVelocity
-    self.heldFlag = heldFlag
-    self.wins = wins
-    self.losses = losses
+    altitude = 0
+    verticalVelocity = 0
+    heldFlag = nil
+    wins = 0
+    losses = 0
   }
 
   public var direction: Vector2 { Vector2(x: cos(heading), y: sin(heading)) }
